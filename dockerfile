@@ -24,4 +24,4 @@ ENV GOOGLE_APPLICATION_CREDENTIALS="/py-prdo-adot-e205b1126ce8.json"
 EXPOSE 8080
 
 # 애플리케이션 실행 명령어
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080", "--log-level", "info"]

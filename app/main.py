@@ -65,7 +65,9 @@ def analyze_app_screen(content: bytes):
 # FastAPI 엔드포인트 설정
 @app.post("/analyze-screen")
 async def analyze_screen(file: UploadFile = File(...)):
-    # 파일 내용을 읽어 분석 함수에 전달
-    content = await file.read()
-    result = analyze_app_screen(content)
-    return result
+    try:
+        content = await file.read()
+        result = analyze_app_screen(content)
+        return result
+    except Exception as e:
+        return {"error": str(e)}
