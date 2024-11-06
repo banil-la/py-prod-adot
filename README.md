@@ -4,15 +4,23 @@
 pip freeze > requirements.txt
 ```
 
+#### RESET
+
+```
+pip uninstall -r requirements.txt -y
+pip install -r requirements.txt
+```
+
 ### Run Local Server
 
 ```
 uvicorn app.main:app --reload
 ```
 
-### Build and run docker
+### Build & Deploy docker
 
 ```
-docker build -t fastapi-clip .
-docker run -p 8000:8000 fastapi-clip
+docker build -t gcr.io/py-prdo-adot/fastapi-vision-app .
+docker push gcr.io/py-prdo-adot/fastapi-vision-app
+gcloud run deploy fastapi-vision-app --image gcr.io/py-prdo-adot/fastapi-vision-app --platform managed --region asia-northeast1 --allow-unauthenticated
 ```

@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 필요 라이브러리 설치
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements_locked.txt .
+RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements_locked.txt
 
 # 애플리케이션 파일 복사
 COPY . .
@@ -21,7 +21,7 @@ COPY . .
 ENV GOOGLE_APPLICATION_CREDENTIALS="/py-prdo-adot-e205b1126ce8.json"
 
 # 포트 노출
-EXPOSE 8000
+EXPOSE 8080
 
 # 애플리케이션 실행 명령어
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]

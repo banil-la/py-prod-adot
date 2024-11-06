@@ -1,5 +1,6 @@
 import os
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from google.cloud import vision
 from google.oauth2 import service_account
 from typing import List
@@ -17,6 +18,21 @@ client = vision.ImageAnnotatorClient(credentials=credentials)
 
 # FastAPI 앱 초기화
 app = FastAPI()
+
+# CORS 설정
+environment = os.getenv("ENVIRONMENT")
+if environment == "local":
+  origins = ["http://localhost:3000"]
+else:  # production
+  origins = ["https://dayneed.me"]
+
+app.add_middleware(
+  CORSMiddleware,
+  allow_origins=origins,
+  allow_credentials=True,
+  allow_methods=["*"],
+  allow_headers=["*"],
+)
 
 # 이미지 분석 함수
 def analyze_app_screen(content: bytes):

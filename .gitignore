@@ -1,6 +1,6 @@
 
 # 가상환경 폴더
-myenv/
+venv/
 
 # 서비스 계정 키 파일
 py-prdo-adot-e205b1126ce8.json
