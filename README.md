@@ -1,3 +1,12 @@
+### 새로 가상환경 생성 및 활성화
+
+python -m venv venv
+source venv/bin/activate # Windows는 venv\Scripts\activate
+
+### 수정한 requirements.txt 설치
+
+pip install -r requirements.txt
+
 ### Create requirements.txt
 
 ```
