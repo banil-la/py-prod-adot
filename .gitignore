@@ -1,0 +1,18 @@
+
+# 가상환경 폴더
+myenv/
+
+# 서비스 계정 키 파일
+py-prdo-adot-e205b1126ce8.json
+
+# Python 캐시 파일 (app 디렉토리 내 포함)
+__pycache__/
+app/__pycache__/
+*.py[cod]
+
+# 환경 변수 파일
+.env
+.env.production
+
+# 기타 에디터 임시 파일
+*.swp
